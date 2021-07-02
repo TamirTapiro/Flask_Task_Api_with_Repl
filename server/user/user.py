@@ -3,10 +3,12 @@ from datetime import datetime
 from bson import ObjectId
 # from task.task import Task
 
-@dataclass(frozen=True)
+@dataclass
 class User:
-    _id: ObjectId
     email: str
     password: str
-    # todos: list[Task] = []
+    _id: ObjectId = ObjectId
     creation_date: datetime = datetime.now()
+
+    def __post_init__(self):
+        self._id = ObjectId()
