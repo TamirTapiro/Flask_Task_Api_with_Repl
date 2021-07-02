@@ -4,10 +4,11 @@ from datetime import datetime
 import uuid
 import ssl
 import json
+import config
 
-mongo_uri = "**********************************************"
+mongo_uri = config.MONGO_URI
 client = MongoClient(mongo_uri, ssl_cert_reqs=ssl.CERT_NONE)
 
-mydb = client["todo_database"]
-tasks_collection = mydb["tasks"]
-users_collection = mydb["users"]
+mydb = client[config.MY_DB]
+tasks_collection = mydb[config.TASKS_COLLECTION]
+users_collection = mydb[config.USERS_COLLECTION]
